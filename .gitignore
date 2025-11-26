@@ -40,5 +40,8 @@
 # debug information files
 *.dwo
 
-# binaries
+# binary folder
 bin
+
+# Object folder
+obj
