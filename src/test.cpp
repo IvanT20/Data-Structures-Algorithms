@@ -5,8 +5,11 @@
 
 int main()
 {
-    std::vector<int> arr = {6, 2, 1, -1, 0, 10, 9};
-    Heap<int> heap(arr);
+    Heap<int> heap{};
+    heap.insert(5);
+    heap.insert(6);
+    heap.insert(4);
+    heap.insert(3);
 
     for (auto& ele : heap.getArray())
     {

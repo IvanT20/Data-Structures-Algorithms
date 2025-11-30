@@ -40,12 +40,20 @@ public:
      */
     explicit Heap(int numOfElements)
     {
-        m_array.reserve(numOfElements);
+        if (numOfElements >= 0)
+        {
+            m_array.reserve(numOfElements);
+        }
     }
 
-    void insert(T element)
+    /**
+     * @brief Adds an element to the heap
+     * @param element The element to be added
+     */
+    void insert(const T element)
     {
-
+        m_array.push_back(element);
+        siftUp(m_array.size() - 1);
     }
 
     void remove()
@@ -134,11 +142,25 @@ private:
 
     /**
      * @brief Swaps elements from the parent node to the child nodes going up.
-     * @param index The index of the parent node.
+     * @param index The index of the current node.
      */
     void siftUp(int index)
     {
+        while (true)
+        {
+            int best = index;
+            int parent = (index - 1) / 2;
 
+            if (parent >= 0 && cmp(m_array[parent], m_array[best]))
+            {
+                std::swap(m_array[index], m_array[parent]);
+                index = parent;
+            }
+            else
+            {
+                break;
+            }
+        }
     }
 
     /**
